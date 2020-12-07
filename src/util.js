@@ -82,6 +82,16 @@ function chillHop() {
             color: ["#c3745f", "#f27441"],
             id: uuidv4(),
             active: false
+        },
+        {
+            name: "Lilo",
+            cover:
+                "https://chillhop.com/wp-content/uploads/2020/11/8a0c857ddad531279d0757f5362380a6837b1b69-1024x1024.jpg",
+            artist: "Middle School, The Field Tapes",
+            audio: "https://mp3.chillhop.com/serve.php/?mp3=11244",
+            color: ["#b7c185", "#dbe8df"],
+            id: uuidv4(),
+            active: false
         }
     ];
 }
