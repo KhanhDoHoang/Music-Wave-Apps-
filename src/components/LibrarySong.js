@@ -1,4 +1,5 @@
 import React from 'react';
+// import { playAudio } from "../Util";
 
 const LibrarySong = ({ setSongs, id, songs, song, setCurrentSong, audioRef, isPlaying }) => {
     const songSelectHandler = () => {
@@ -32,7 +33,8 @@ const LibrarySong = ({ setSongs, id, songs, song, setCurrentSong, audioRef, isPl
                 })
             }
         }
-    }
+        // playAudio(isPlaying, audioRef);
+    };
     return (
         <div
             onClick={songSelectHandler}

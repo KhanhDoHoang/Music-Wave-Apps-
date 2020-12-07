@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
+// import { playAudio } from "../Util";
 
 const Player = ({ setSongs, setCurrentSong, songs, currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, songInfo }) => {
     //UseEffect
@@ -19,8 +20,12 @@ const Player = ({ setSongs, setCurrentSong, songs, currentSong, isPlaying, setIs
                 };
             }
         });
+
         setSongs(newSongs);
-    }, [currentSong])//Changing when currentSong updates
+        if ((isPlaying) && audioRef.current.paused) {
+            audioRef.current.play()
+        }
+    }, [isPlaying, currentSong])//Changing when currentSong updates
 
     //Event Handler
     const playSongHandler = () => {
@@ -32,7 +37,8 @@ const Player = ({ setSongs, setCurrentSong, songs, currentSong, isPlaying, setIs
             audioRef.current.pause();
             //set the isPlaying to opposite to what it was
             setIsPlaying(!isPlaying);
-        } else {
+        }
+        else {
             audioRef.current.play();
             //set the isPlaying to opposite to what it was
             setIsPlaying(!isPlaying);
@@ -41,9 +47,7 @@ const Player = ({ setSongs, setCurrentSong, songs, currentSong, isPlaying, setIs
 
     //Time Formatting
     const getTime = (time) => {
-        return (
-            Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
-        )
+        return `${Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)}`;
     }
 
     //Draggable track point
@@ -65,11 +69,17 @@ const Player = ({ setSongs, setCurrentSong, songs, currentSong, isPlaying, setIs
             // setCurrentSong(songs[(currentIndex - 1)]);
 
             ((currentIndex - 1) % songs.length === -1) ? setCurrentSong(songs[songs.length - 1]) : setCurrentSong(songs[(currentIndex - 1)]);
-            return;
         }
-    }
-
-
+        // playAudio(isPlaying, audioRef);
+        // if (isPlaying) {
+        //     const playPromise = audioRef.current.play();
+        //     if (playPromise !== undefined) {
+        //         playPromise.then((audio) => {
+        //             audioRef.current.play();
+        //         })
+        //     }
+        // }
+    };
 
     return (
         <div className="player">
@@ -87,7 +97,7 @@ const Player = ({ setSongs, setCurrentSong, songs, currentSong, isPlaying, setIs
             </div>
             <div className="play-control">
                 <FontAwesomeIcon
-                    onClick={() => skipTrackHandler('skip-back') && playSongHandler}
+                    onClick={() => skipTrackHandler('skip-back')}
                     className="skip-back"
                     size="2x"
                     icon={faAngleLeft} />
@@ -96,7 +106,7 @@ const Player = ({ setSongs, setCurrentSong, songs, currentSong, isPlaying, setIs
                     className="play" size="2x"
                     icon={isPlaying ? faPause : faPlay} />
                 <FontAwesomeIcon
-                    onClick={() => skipTrackHandler('skip-forward') && playSongHandler}
+                    onClick={() => skipTrackHandler('skip-forward')}
                     className="skip-forward"
                     size="2x"
                     icon={faAngleRight} />
