@@ -8,7 +8,10 @@
     img {
         width: 20%;
         border-radius: 50%;
+        -webkit-animation: spin 5s linear infinite;
+        animation: spin 15s linear infinite;
     }
+
 
     h2 {
         padding: 3rem 1rem 1rem 1rem;
@@ -18,3 +21,62 @@
         font-size: 1rem;
     }
 }
+
+
+
+/* include this only once */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);
+        /* IE 9 */
+        transform: rotate(0deg);
+        /* Firefox 16+, IE 10+, Opera */
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);
+        /* IE 9 */
+        transform: rotate(360deg);
+        /* Firefox 16+, IE 10+, Opera */
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);
+        /* IE 9 */
+        transform: rotate(0deg);
+        /* Firefox 16+, IE 10+, Opera */
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);
+        /* IE 9 */
+        transform: rotate(360deg);
+        /* Firefox 16+, IE 10+, Opera */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .song-container {
+        img {
+            width: 50%;
+        }
+    }
+}
+
+// @media screen and (min-width: 769px) {
+//     .song-container {
+//         img {
+//             width: 20%;
+//         }
+//     }
+// }

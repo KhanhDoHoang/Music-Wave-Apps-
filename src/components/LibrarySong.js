@@ -2,13 +2,13 @@ import React from 'react';
 // import { playAudio } from "../Util";
 
 const LibrarySong = ({ setSongs, id, songs, song, setCurrentSong, audioRef, isPlaying }) => {
-    const songSelectHandler = () => {
+    const songSelectHandler = async () => {
         //Old way comparing between clicked song and song in State
         // const selectedSong = songs.filter((state) => state.id === id);
         // setCurrentSong(selectedSong[0]);
 
         //Passed down the current song from Library
-        setCurrentSong(song);
+        await setCurrentSong(song);
         //Add Active State
         const newSongs = songs.map((song) => {
             if (song.id === id) {

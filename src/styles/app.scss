@@ -4,20 +4,51 @@
     box-sizing: border-box;
 }
 
+.App {
+    min-height: 100vh;
+    position: relative;
+    transition: all 1s ease-in;
+    transition: all 0.3s ease-out;
+
+
+    .frame {
+        z-index: -6;
+        background-color: aquamarine;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        opacity: 0.6;
+    }
+
+    .bg {
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        z-index: -10;
+    }
+}
+
+.library-active {
+    margin-left: 20%;
+    // transition: all 1.5s ease-in-out;
+}
+
 h1,
 h2,
 h3 {
-    color: rgb(54, 54, 54);
+    color: rgb(34, 34, 34);
+    font-size: xx-large;
+    color: aliceblue;
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Nerko One', sans-serif;
 }
 
 h3,
 h4 {
     font-weight: 400;
-    color: rgb(100, 100, 100);
+    color: rgb(230, 230, 230);
 }
 
 @import "./song";
